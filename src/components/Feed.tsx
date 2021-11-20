@@ -14,7 +14,7 @@ const Feed: FunctionComponent = () => {
 
 	const loadPosts = async () => {
 		const [response, error] = await handleErr(
-			fetch("http://localhost:8787/posts")
+			fetch("https://torneos.torneos.workers.dev/posts")
 		);
 
 		if (error !== null) {

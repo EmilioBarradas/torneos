@@ -15,7 +15,7 @@ const createPost = async (user: User, data: string) => {
 		],
 	};
 
-	return fetch("http://localhost:8787/post", {
+	return fetch("https://torneos.torneos.workers.dev/post", {
 		method: "POST",
 		body: JSON.stringify(createPostData),
 	});

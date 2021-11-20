@@ -23,7 +23,7 @@ const ReactionsBar: FunctionComponent<{ post: Post }> = ({ post }) => {
 		};
 
 		const [_, error] = await handleErr(
-			fetch("http://localhost:8787/reaction", {
+			fetch("https://torneos.torneos.workers.dev/reaction", {
 				method: "POST",
 				body: JSON.stringify(addReactionData),
 			})

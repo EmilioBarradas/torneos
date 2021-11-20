@@ -61,7 +61,7 @@ const ModificationContainer: FunctionComponent<{ post: Post }> = ({ post }) => {
 		setIsDeleting(true);
 
 		const [_, error] = await handleErr(
-			fetch(`http://localhost:8787/post/${post.uid}`, {
+			fetch(`https://torneos.torneos.workers.dev/post/${post.uid}`, {
 				method: "DELETE",
 			})
 		);
@@ -86,7 +86,7 @@ const ModificationContainer: FunctionComponent<{ post: Post }> = ({ post }) => {
 		};
 
 		const [_, error] = await handleErr(
-			fetch(`http://localhost:8787/post/${post.uid}`, {
+			fetch(`https://torneos.torneos.workers.dev/post/${post.uid}`, {
 				method: "PATCH",
 				body: JSON.stringify(updatePostData),
 			})
