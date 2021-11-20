@@ -16,7 +16,7 @@ interface Media {
 	data: string;
 }
 
-type MediaType = "text" | "image";
+type MediaType = "text" | "giphy" | "youtube";
 
 interface CreatePostData {
 	user: User;

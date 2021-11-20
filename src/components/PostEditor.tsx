@@ -1,18 +1,14 @@
 import { FunctionComponent, useState, ChangeEvent, useContext } from "react";
-import { Button, Group, Text, Textarea, Title } from "@mantine/core";
+import { Button, Group, Text, Textarea } from "@mantine/core";
 import { handleErr } from "../utils/error";
 import { useNotifications } from "@mantine/notifications";
 import { TorneosContext } from "./Torneos";
+import { getUrlMedias } from "../utils/url";
 
-const createPost = async (user: User, data: string) => {
+const createPost = async (user: User, ...medias: Media[]) => {
 	const createPostData: CreatePostData = {
 		user,
-		media: [
-			{
-				type: "text",
-				data,
-			},
-		],
+		media: medias,
 	};
 
 	return fetch("https://torneos.torneos.workers.dev/post", {
@@ -30,13 +26,21 @@ const PostEditor: FunctionComponent = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const submitPost = async () => {
-		const postData = value.replaceAll("\n", "");
+		const input = value;
 
 		setIsSubmitting(true);
 		setValue("");
 
+		const text = input.replaceAll("\n", "");
+
+		const textMedia: Media = {
+			type: "text",
+			data: text,
+		};
+		const urlMedias = getUrlMedias(text);
+
 		const [response, error] = await handleErr(
-			createPost(torneos.user, postData)
+			createPost(torneos.user, textMedia, ...urlMedias)
 		);
 
 		setIsSubmitting(false);
