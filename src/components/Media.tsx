@@ -84,7 +84,7 @@ const GiphyMedia: FunctionComponent<{ id: string }> = ({ id }) => {
 const YouTubeMedia: FunctionComponent<{ id: string }> = ({ id }) => {
 	return (
 		<iframe
-			src={`http://www.youtube.com/embed/${id}`}
+			src={`https://www.youtube.com/embed/${id}`}
 			width="350"
 			height="350"
 			frameBorder="0"
